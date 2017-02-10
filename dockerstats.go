@@ -53,7 +53,6 @@ func Monitor() chan *StatsResult {
 	c := make(chan *StatsResult)
 	go func() {
 		for {
-			println("HERE")
 			s, err := Current()
 			c <- &StatsResult{
 				Stats: s,
