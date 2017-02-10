@@ -25,8 +25,7 @@ function:
 Alternatively, you can use the `Monitor()` function to receive a constant stream
 of Docker container stats:
 
-    c := make(chan *StatsResult)
-    dockerstats.Monitor(c)
+    c := dockerstats.Monitor()
 
     for {
     	res := <-c
@@ -55,12 +54,12 @@ running Docker containers, simply an empty slice.
 #### func  Monitor
 
 ```go
-func Monitor(c chan *StatsResult)
+func Monitor() chan *StatsResult
 ```
 Monitor repeatedly retrieves the current stats for each running Docker
 container, and sends them through the channel provided.
 
-Each StatsResult sent through the channel contains either an `error` or a
+Each `StatsResult` sent through the channel contains either an `error` or a
 `Stats` slice equal in length to the number of running Docker containers.
 
 #### type MemoryStats
