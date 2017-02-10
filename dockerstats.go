@@ -48,6 +48,9 @@ const (
 
 // Monitor repeatedly retrieves the current stats for each running Docker container,
 // and sends them through the channel provided.
+//
+// Each StatsResult sent through the channel contains either an `error` or a
+// `Stats` slice equal in length to the number of running Docker containers.
 func Monitor(c chan *StatsResult) {
 	go func() {
 		for {
@@ -60,7 +63,11 @@ func Monitor(c chan *StatsResult) {
 	}()
 }
 
-// Current returns the current stats of each running Docker container.
+// Current returns the current `Stats` of each running Docker container.
+//
+// Current will always return a `[]Stats` slice equal in length to the number of
+// running Docker containers, or an `error`. No error is returned if there are no
+// running Docker containers, simply an empty slice.
 func Current() ([]Stats, error) {
 	out, err := exec.Command(dockerPath, dockerCommand, dockerNoStreamArg, dockerFormatArg, dockerFormat).Output()
 	if err != nil {

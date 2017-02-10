@@ -8,10 +8,10 @@
 Package dockerstats provides the ability to get currently running Docker
 container statistics, including memory and CPU usage.
 
-To get the statistics of running Docker containers, you can use the `CurStats()`
+To get the statistics of running Docker containers, you can use the `Current()`
 function:
 
-    stats, err := dockerstats.CurStats()
+    stats, err := dockerstats.Current()
     if err != nil {
     	panic(err)
     }
@@ -41,12 +41,16 @@ of Docker container stats:
 
 ## Usage
 
-#### func  CurStats
+#### func  Current
 
 ```go
-func CurStats() ([]Stats, error)
+func Current() ([]Stats, error)
 ```
-CurStats returns the current stats of each running Docker container.
+Current returns the current `Stats` of each running Docker container.
+
+Current will always return a `[]Stats` slice equal in length to the number of
+running Docker containers, or an `error`. No error is returned if there are no
+running Docker containers, simply an empty slice.
 
 #### func  Monitor
 
@@ -55,6 +59,9 @@ func Monitor(c chan *StatsResult)
 ```
 Monitor repeatedly retrieves the current stats for each running Docker
 container, and sends them through the channel provided.
+
+Each StatsResult sent through the channel contains either an `error` or a
+`Stats` slice equal in length to the number of running Docker containers.
 
 #### type MemoryStats
 
