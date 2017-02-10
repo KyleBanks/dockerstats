@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+golint ./...
+go vet ./...
+godocdown -template=".godocdown.md" . > README.md

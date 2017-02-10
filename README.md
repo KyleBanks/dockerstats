@@ -106,3 +106,7 @@ type StatsResult struct {
 
 StatsResult is the value recieved when using Monitor to listen for Docker
 statistics.
+
+## License
+
+`dockerstats` is available [under MIT license](./LICENSE).
