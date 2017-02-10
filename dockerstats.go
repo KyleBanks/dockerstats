@@ -16,8 +16,7 @@
 //
 // Alternatively, you can use the `Monitor()` function to receive a constant stream of Docker container stats:
 //
-// 		c := make(chan *StatsResult)
-// 		dockerstats.Monitor(c)
+// 		c := dockerstats.Monitor()
 //
 // 		for {
 // 			res := <-c
@@ -33,7 +32,6 @@ package dockerstats
 
 import (
 	"encoding/json"
-	"fmt"
 	"os/exec"
 	"strings"
 )
@@ -49,18 +47,22 @@ const (
 // Monitor repeatedly retrieves the current stats for each running Docker container,
 // and sends them through the channel provided.
 //
-// Each StatsResult sent through the channel contains either an `error` or a
+// Each `StatsResult` sent through the channel contains either an `error` or a
 // `Stats` slice equal in length to the number of running Docker containers.
-func Monitor(c chan *StatsResult) {
+func Monitor() chan *StatsResult {
+	c := make(chan *StatsResult)
 	go func() {
 		for {
-			s, err := CurStats()
+			println("HERE")
+			s, err := Current()
 			c <- &StatsResult{
 				Stats: s,
 				Error: err,
 			}
 		}
 	}()
+
+	return c
 }
 
 // Current returns the current `Stats` of each running Docker container.

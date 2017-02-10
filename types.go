@@ -1,5 +1,9 @@
 package dockerstats
 
+import (
+	"fmt"
+)
+
 // StatsResult is the value recieved when using Monitor to listen for
 // Docker statistics.
 type StatsResult struct {

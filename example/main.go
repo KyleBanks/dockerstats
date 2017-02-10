@@ -7,8 +7,7 @@ import (
 )
 
 func main() {
-	c := make(chan *dockerstats.StatsResult)
-	dockerstats.Monitor(c)
+	c := dockerstats.Monitor()
 
 	for {
 		res := <-c
