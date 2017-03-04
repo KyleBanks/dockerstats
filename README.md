@@ -38,6 +38,15 @@ stream of Docker container stats, available on the Monitor's `Stream` channel:
     	}
     }
 
+## Example
+
+For a simple example of writing the statistics of each running Docker container to a file, see the [example directory](./example).
+
+```
+cd example
+go run main.go "output.txt"
+```
+
 ## Usage
 
 #### func  Current
