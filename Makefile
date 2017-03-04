@@ -1,4 +1,5 @@
 include github.com/KyleBanks/make/go/sanity
+include github.com/KyleBanks/make/misc/precommit
 
 # Generates the README.md documentation from the source code.
 docs:
