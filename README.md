@@ -4,7 +4,8 @@
 
 [![Build Status](https://travis-ci.org/KyleBanks/dockerstats.svg?branch=master)](https://travis-ci.org/KyleBanks/dockerstats) &nbsp;
 [![GoDoc](https://godoc.org/github.com/KyleBanks/dockerstats?status.svg)](https://godoc.org/github.com/KyleBanks/dockerstats) &nbsp;
-[![Go Report Card](https://goreportcard.com/badge/github.com/KyleBanks/dockerstats)](https://goreportcard.com/report/github.com/KyleBanks/dockerstats)
+[![Go Report Card](https://goreportcard.com/badge/github.com/KyleBanks/dockerstats)](https://goreportcard.com/report/github.com/KyleBanks/dockerstats)&nbsp;
+[![Coverage Status](https://coveralls.io/repos/github/KyleBanks/dockerstats/badge.svg?branch=master)](https://coveralls.io/github/KyleBanks/dockerstats?branch=master)
 
 Package dockerstats provides the ability to get currently running Docker
 container statistics, including memory and CPU usage.
