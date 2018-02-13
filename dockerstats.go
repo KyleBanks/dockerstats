@@ -31,7 +31,7 @@
 package dockerstats
 
 const (
-	defaultDockerPath        string = "/usr/local/bin/docker"
+	defaultDockerPath        string = "/usr/bin/docker"
 	defaultDockerCommand     string = "stats"
 	defaultDockerNoStreamArg string = "--no-stream"
 	defaultDockerFormatArg   string = "--format"
