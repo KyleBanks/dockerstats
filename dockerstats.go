@@ -34,7 +34,7 @@ import "runtime"
 
 const (
 	defaultDockerPath        string = "/usr/bin/docker"
-	macOSDockerPath          string = "usr/local/bin/docker"
+	macOSDockerPath          string = "/usr/local/bin/docker"
 	defaultDockerCommand     string = "stats"
 	defaultDockerNoStreamArg string = "--no-stream"
 	defaultDockerFormatArg   string = "--format"
