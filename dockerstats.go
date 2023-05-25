@@ -5,13 +5,13 @@
 //
 //	stats, err := dockerstats.Current()
 //	if err != nil {
-//		panic(err)
+//	    panic(err)
 //	}
 //
 //	for _, s := range stats {
-//		fmt.Println(s.Container) // 9f2656020722
-//		fmt.Println(s.Memory) // {Raw=221.7 MiB / 7.787 GiB, Percent=2.78%}
-//		fmt.Println(s.CPU) // 99.79%
+//	    fmt.Println(s.Container) // 9f2656020722
+//	    fmt.Println(s.Memory) // {Raw=221.7 MiB / 7.787 GiB, Percent=2.78%}
+//	    fmt.Println(s.CPU) // 99.79%
 //	}
 //
 // Alternatively, you can use the `NewMonitor()` function to receive a constant stream of Docker container stats,
@@ -20,13 +20,13 @@
 //	m := dockerstats.NewMonitor()
 //
 //	for res := range m.Stream {
-//		if res.Error != nil {
-//			panic(err)
-//		}
+//	    if res.Error != nil {
+//	        panic(err)
+//	    }
 //
-//		for _, s := range res.Stats {
-//			fmt.Println(s.Container) // 9f2656020722
-//		}
+//	    for _, s := range res.Stats {
+//	        fmt.Println(s.Container) // 9f2656020722
+//	    }
 //	}
 package dockerstats
 
@@ -52,7 +52,7 @@ var DefaultCommunicator Communicator = CliCommunicator{
 }
 
 var MacOSCommunicator Communicator = CliCommunicator{
-    DockerPath: macOSDockerPath,
+	DockerPath: macOSDockerPath,
 	Command:    []string{defaultDockerCommand, defaultDockerNoStreamArg, defaultDockerFormatArg, defaultDockerFormat},
 }
 
@@ -62,8 +62,8 @@ var MacOSCommunicator Communicator = CliCommunicator{
 // running Docker containers, or an `error`. No error is returned if there are no
 // running Docker containers, simply an empty slice.
 func Current() ([]Stats, error) {
-    if runtime.GOOS == "darwin" {
-        return MacOSCommunicator.Stats()
-    }
+	if runtime.GOOS == "darwin" {
+		return MacOSCommunicator.Stats()
+	}
 	return DefaultCommunicator.Stats()
 }
